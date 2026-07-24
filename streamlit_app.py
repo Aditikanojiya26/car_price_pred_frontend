@@ -163,20 +163,27 @@ div[data-testid="stMarkdownContainer"] p {
 }
 
 /* ---- Button ---- */
-.stButton > button {
-    width: 100%;
+.stButton {
+    width: 100% !important;
+}
+.stButton > button,
+.stButton button,
+div[data-testid="stButton"] button {
+    width: 100% !important;
     background: var(--amber);
     color: var(--ink-navy);
     font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 1.02rem;
+    font-weight: 900;
+    font-size: 2rem;
     border: none;
     border-radius: 11px;
     padding: 0.75rem 0;
     box-shadow: 0 6px 20px rgba(242, 166, 60, 0.25);
     transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
-.stButton > button:hover {
+.stButton > button:hover,
+.stButton button:hover,
+div[data-testid="stButton"] button:hover {
     transform: translateY(-1px);
     box-shadow: 0 8px 26px rgba(242, 166, 60, 0.35);
     color: var(--ink-navy);
@@ -296,7 +303,7 @@ car_age = datetime.now().year - manufacture
 # ============================================================
 # Prediction
 # ============================================================
-if st.button("Predict price"):
+if st.button("Predict price", use_container_width=True):
 
     payload = {
         "brand": brand,
