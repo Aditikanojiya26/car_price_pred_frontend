@@ -20,20 +20,24 @@ st.markdown("""
 
 <style>
 :root {
-    --ink-navy: #10192E;
-    --steel: #4B5563;
-    --cloud: #F4F6F9;
+    --ink-navy: #0A0F1C;
+    --surface: #131B2E;
+    --surface-2: #1A2338;
+    --border: rgba(242, 166, 60, 0.14);
+    --steel: #9AA5C0;
+    --cloud: #060A14;
     --amber: #F2A63C;
-    --teal: #0E7C7B;
-    --white: #FFFFFF;
+    --teal: #35C7C0;
+    --white: #EDF0F7;
 }
 
 html, body, [class*="css"]  {
     font-family: 'Inter', sans-serif;
+    color: var(--white);
 }
 
 .stApp {
-    background: var(--cloud);
+    background: radial-gradient(circle at 15% 0%, #101a30 0%, var(--cloud) 55%);
 }
 
 /* Hide default Streamlit chrome for a cleaner look */
@@ -41,11 +45,12 @@ html, body, [class*="css"]  {
 
 /* ---- Hero band ---- */
 .hero {
-    background: linear-gradient(135deg, var(--ink-navy) 0%, #1B2A4A 100%);
+    background: linear-gradient(135deg, #0D1526 0%, #1B2A4A 100%);
+    border: 1px solid var(--border);
     border-radius: 18px;
     padding: 2.1rem 2rem 1.8rem 2rem;
     margin-bottom: 1.6rem;
-    box-shadow: 0 10px 30px rgba(16, 25, 46, 0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
     position: relative;
     overflow: hidden;
 }
@@ -78,7 +83,7 @@ html, body, [class*="css"]  {
     letter-spacing: -0.02em;
 }
 .hero-sub {
-    color: #A9B4CC;
+    color: var(--steel);
     font-size: 0.98rem;
     margin-top: 0.4rem;
     max-width: 34rem;
@@ -98,18 +103,18 @@ html, body, [class*="css"]  {
 
 /* ---- Section card ---- */
 .section-card {
-    background: var(--white);
+    background: var(--surface);
     border-radius: 16px;
     padding: 1.6rem 1.7rem 0.6rem 1.7rem;
     margin-bottom: 1.3rem;
-    box-shadow: 0 2px 14px rgba(16, 25, 46, 0.06);
-    border: 1px solid rgba(16, 25, 46, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.06);
 }
 .section-label {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 600;
     font-size: 1.02rem;
-    color: var(--ink-navy);
+    color: var(--white);
     margin-bottom: 0.9rem;
     display: flex;
     align-items: center;
@@ -130,8 +135,31 @@ div[data-testid="stSelectbox"] label, div[data-testid="stNumberInput"] label {
     font-weight: 500;
     font-size: 0.88rem;
 }
-div[data-testid="stSelectbox"] > div > div, div[data-testid="stNumberInput"] input {
+div[data-testid="stSelectbox"] > div > div {
+    background: var(--surface-2) !important;
     border-radius: 9px !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    color: var(--white) !important;
+}
+div[data-testid="stNumberInput"] input {
+    background: var(--surface-2) !important;
+    border-radius: 9px !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    color: var(--white) !important;
+}
+div[data-testid="stNumberInput"] button {
+    background: var(--surface-2) !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+}
+div[data-baseweb="select"] > div {
+    background: var(--surface-2) !important;
+    color: var(--white) !important;
+}
+ul[data-testid="stSelectboxVirtualDropdown"] {
+    background: var(--surface-2) !important;
+}
+div[data-testid="stMarkdownContainer"] p {
+    color: var(--white);
 }
 
 /* ---- Button ---- */
@@ -145,27 +173,27 @@ div[data-testid="stSelectbox"] > div > div, div[data-testid="stNumberInput"] inp
     border: none;
     border-radius: 11px;
     padding: 0.75rem 0;
-    box-shadow: 0 6px 18px rgba(242, 166, 60, 0.35);
+    box-shadow: 0 6px 20px rgba(242, 166, 60, 0.25);
     transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 .stButton > button:hover {
     transform: translateY(-1px);
-    box-shadow: 0 8px 22px rgba(242, 166, 60, 0.45);
+    box-shadow: 0 8px 26px rgba(242, 166, 60, 0.35);
     color: var(--ink-navy);
 }
 
 /* ---- Readout panel (signature element) ---- */
 .readout {
-    background: var(--ink-navy);
-    border: 1px solid rgba(242, 166, 60, 0.35);
+    background: linear-gradient(135deg, #0D1526 0%, #16203A 100%);
+    border: 1px solid rgba(242, 166, 60, 0.4);
     border-radius: 16px;
     padding: 1.5rem 1.7rem;
     margin-top: 1.2rem;
-    box-shadow: 0 0 0 1px rgba(242,166,60,0.08), 0 12px 28px rgba(16,25,46,0.3);
+    box-shadow: 0 0 0 1px rgba(242,166,60,0.1), 0 12px 32px rgba(0,0,0,0.5);
 }
 .readout-label {
     font-family: 'JetBrains Mono', monospace;
-    color: #A9B4CC;
+    color: var(--steel);
     font-size: 0.72rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -176,11 +204,11 @@ div[data-testid="stSelectbox"] > div > div, div[data-testid="stNumberInput"] inp
     font-size: 2.3rem;
     font-weight: 700;
     color: var(--amber);
-    text-shadow: 0 0 18px rgba(242, 166, 60, 0.45);
+    text-shadow: 0 0 22px rgba(242, 166, 60, 0.55);
     letter-spacing: 0.01em;
 }
 .readout-meta {
-    color: #7C89A6;
+    color: var(--steel);
     font-size: 0.82rem;
     margin-top: 0.5rem;
     font-family: 'Inter', sans-serif;
@@ -188,7 +216,7 @@ div[data-testid="stSelectbox"] > div > div, div[data-testid="stNumberInput"] inp
 
 .footer-note {
     text-align: center;
-    color: #9AA5B8;
+    color: var(--steel);
     font-size: 0.8rem;
     margin-top: 1.5rem;
 }
